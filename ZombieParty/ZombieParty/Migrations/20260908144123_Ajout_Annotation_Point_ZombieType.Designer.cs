@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZombieParty.Models.facultatif;
 
@@ -10,9 +11,11 @@ using ZombieParty.Models.facultatif;
 namespace ZombieParty.Migrations
 {
     [DbContext(typeof(ZombiePartyDbContext))]
-    partial class ZombiePartyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260908144123_Ajout_Annotation_Point_ZombieType")]
+    partial class Ajout_Annotation_Point_ZombieType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,13 +64,9 @@ namespace ZombieParty.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Point")
-                        .HasColumnType("int");
-
                     b.Property<string>("TypeName")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
