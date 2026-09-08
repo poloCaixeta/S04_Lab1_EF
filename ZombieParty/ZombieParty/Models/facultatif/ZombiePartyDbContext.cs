@@ -9,8 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
     }
 
+    public DbSet<Zombie> zombies { get; set; }
 
-
+    public DbSet<ZombieType> zombieTypes { get; set; }
 
 }
 
